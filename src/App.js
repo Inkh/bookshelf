@@ -2,6 +2,8 @@ import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import SearchResults from './searchresult'
+
+
 class BooksApp extends React.Component {
   state = {
     books : [],
@@ -18,7 +20,7 @@ class BooksApp extends React.Component {
 
   render() {
     return (
-        <div>Hello World
+        <div>
           <SearchResults books={this.state.books} />
         </div>
     //   <div className="app">
