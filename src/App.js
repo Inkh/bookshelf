@@ -1,7 +1,7 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
-import SearchResults from './searchresult'
+import BookShelf from './bookshelf'
 
 
 class BooksApp extends React.Component {
@@ -21,7 +21,7 @@ class BooksApp extends React.Component {
   render() {
     return (
         <div>
-          <SearchResults books={this.state.books} />
+          <BookShelf books={this.state.books} />
         </div>
     //   <div className="app">
     //     {this.state.showSearchPage ? (
