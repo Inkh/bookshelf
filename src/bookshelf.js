@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom';
 
 class BookShelf extends Component {
     render(){
@@ -32,6 +33,13 @@ class BookShelf extends Component {
               </div>
             ))}
           </ol>
+          <div>
+          <Link
+          to='/create'
+          // onClick={this.props.onNavigate}
+          // className = 'add-contact'
+          >Search Books</Link>
+          </div>
         </div>
       )
     }
