@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 
 class Tester extends Component {
 
 
   render(){
-    console.log(this.props.books)
     return(
       <div className='list-books'>
         <div className='list-books-title'>
@@ -113,6 +112,12 @@ class Tester extends Component {
               </div>
             </div>
           </div>
+        </div>
+        <div className='open-search'>
+          <Link
+          to='/create'
+          // onClick={this.props.onNavigate}
+          >Search Books</Link>
         </div>
       </div>
     )

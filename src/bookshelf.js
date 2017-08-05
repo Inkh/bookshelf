@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 class BookShelf extends Component {
 
     render(){
-      let lilter;
-      lilter = this.props.books.filter((book) => book.shelf === 'currentlyReading')
-      console.log(lilter)
       return(
         <div className='list-books'>
           <ol className='books-grid'>
@@ -37,12 +34,12 @@ class BookShelf extends Component {
               </div>
             ))}
           </ol>
-          <div>
-          <Link
-          to='/create'
-          // onClick={this.props.onNavigate}
-          // className = 'add-contact'
-          >Search Books</Link>
+
+          <div className='open-search'>
+            <Link
+            to='/create'
+            // onClick={this.props.onNavigate}
+            >Search Books</Link>
           </div>
         </div>
       )
