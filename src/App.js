@@ -20,14 +20,15 @@ class BooksApp extends React.Component {
   }
 
   updateShelf = (book, shelf) => {
-      console.log(book)
       console.log(shelf)
-      if (book.shelf !== shelf){
-        BooksAPI.update(book, shelf).then(
-          book.book.shelf = shelf
+      const b = book.book
+      console.log(b)
+      if(b.shelf !== shelf){
+        BooksAPI.update(b, shelf).then(
+          b.shelf = shelf
         )
         this.setState(({
-          books: this.state.books.filter(b => b.id !== book.id).concat([book])
+          books: this.state.books.filter(target => target.id !== b.id).concat([b])
         }))
       }
   }
@@ -41,6 +42,7 @@ class BooksApp extends React.Component {
         } else{
           this.setState({ results: [] })
         }
+        console.log(results)
     })
   }
 
