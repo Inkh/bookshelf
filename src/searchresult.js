@@ -18,17 +18,6 @@ class SearchResults extends Component {
     }
 
     render(){
-      let showingResults;
-      if(this.props.results){
-        showingResults = this.props.results
-      }
-      if(!this.props.results){
-        return (
-
-          <div>Loading...</div>
-
-        )
-      }
 
       return(
         <div className='app'>
@@ -62,7 +51,12 @@ class SearchResults extends Component {
                           <div className='book' key={book.id}>
                             <li>
                               <div className='book-top'>
-                                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                                {book.imageLinks ? (
+                                  <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                                ) :(
+                                  <div></div>
+                                )
+                                }
                                 <div className='book-shelf-changer'>
                                     <select>
                                     <option value="none" disabled>Move to...</option>
