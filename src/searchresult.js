@@ -10,7 +10,6 @@ class SearchResults extends Component {
 
     updateQuery = (query) => {
       this.setState({ query: query.trim() })
-      console.log(this.state.query.length)
       if(this.state.query !== ''){
         this.props.onSearch(query)
       }
@@ -22,7 +21,7 @@ class SearchResults extends Component {
       const book = b.book
       this.props.onUpdate(book, e)
     }
-    
+
     render(){
 
       return(
