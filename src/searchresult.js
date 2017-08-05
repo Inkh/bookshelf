@@ -51,57 +51,62 @@ class SearchResults extends Component {
                 </div>
               </div>
             </div>
-            <div className='search-books-results'>
-              <div className='list-books-content'>
-                <div>
-                  <div className='bookshelf-books'>
-                      <ol className='books-grid'>
-                        {this.props.results.map((book, index) => (
-                          <div className='book' key={book.id}>
-                            <li>
-                              <div className='book-top'>
-                                {book.imageLinks ? (
-                                  <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
-                                ) :(
-                                  <div></div>
-                                )}
-                                {((this.props.books.filter((b) => b.id === book.id)).length > 0) ? (
-                                  <div className='book-shelf-changer'>
-                                      <select value={(this.props.books.filter((b) => b.id === book.id)[0].shelf)} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
-                                        <option value="none" disabled>Move to...</option>
-                                        <option value="currentlyReading">Currently Reading</option>
-                                        <option value="wantToRead">Want to Read</option>
-                                        <option value="read">Read</option>
-                                        <option value="none">None</option>
-                                      </select>
-                                  </div>
-                                ) :(
+            {this.props.results.length > 0 ? (
+              <div className='search-books-results'>
+                <div className='list-books-content'>
+                  <div>
+                    <div className='bookshelf-books'>
+                        <ol className='books-grid'>
+                          {this.props.results.map((book, index) => (
+                            <div className='book' key={book.id}>
+                              <li>
+                                <div className='book-top'>
+                                  {book.imageLinks ? (
+                                    <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                                  ) :(
+                                    <div></div>
+                                  )}
+                                  {((this.props.books.filter((b) => b.id === book.id)).length > 0) ? (
+                                    <div className='book-shelf-changer'>
+                                        <select value={(this.props.books.filter((b) => b.id === book.id)[0].shelf)} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
+                                          <option value="none" disabled>Move to...</option>
+                                          <option value="currentlyReading">Currently Reading</option>
+                                          <option value="wantToRead">Want to Read</option>
+                                          <option value="read">Read</option>
+                                          <option value="none">None</option>
+                                        </select>
+                                    </div>
+                                  ) :(
 
-                                  <div className='book-shelf-changer'>
-                                    <select value={book.shelf} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
-                                    <option value="none" disabled>Move to...</option>
-                                    <option value="currentlyReading">Currently Reading</option>
-                                    <option value="wantToRead">Want to Read</option>
-                                    <option value="read">Read</option>
-                                    <option value="none">None</option>
-                                  </select>
-                                  </div>
-                                )}
-                              </div>
-                              <div className='book-title'>
-                                <p>{book.title}</p>
-                              </div>
-                              <div className='book-authors'>
-                                {book.authors}
-                              </div>
-                            </li>
-                          </div>
-                        ))}
-                      </ol>
-                    </div>
+                                    <div className='book-shelf-changer'>
+                                      <select value={book.shelf} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
+                                      <option value="none" disabled>Move to...</option>
+                                      <option value="currentlyReading">Currently Reading</option>
+                                      <option value="wantToRead">Want to Read</option>
+                                      <option value="read">Read</option>
+                                      <option value="none">None</option>
+                                    </select>
+                                    </div>
+                                  )}
+                                </div>
+                                <div className='book-title'>
+                                  <p>{book.title}</p>
+                                </div>
+                                <div className='book-authors'>
+                                  {book.authors}
+                                </div>
+                              </li>
+                            </div>
+                          ))}
+                        </ol>
+                      </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <div></div>
+            )}
+
           </div>
       )
     }
