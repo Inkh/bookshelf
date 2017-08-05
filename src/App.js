@@ -79,6 +79,7 @@ class BooksApp extends React.Component {
           <Route path='/create' render={({ history }) => (
             <SearchResults
               onSearch={this.searchBooks}
+              onUpdate={this.updateShelf}
               results={this.state.results.filter((book) => book.shelf === 'none')}
               onCreateSearch={() => {
                 history.push('/')
