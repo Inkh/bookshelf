@@ -3,12 +3,12 @@ import React, { Component } from 'react'
 
 class BookShelf extends Component {
 
-    handleChange(b, e){
-      console.log(b)
-      console.log(e)
-      const book = b.book
-      this.props.onUpdate(book, e)
-    }
+    // handleChange(b, e){
+    //   console.log(b)
+    //   console.log(e)
+    //   const book = b.book
+    //   this.props.onUpdate(book, e)
+    // }
 
     render(){
       return(

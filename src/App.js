@@ -3,7 +3,6 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './bookshelf'
 import SearchResults from './searchresult'
-// import Tester from './tester'
 import { Route, Link } from 'react-router-dom'
 
 
@@ -23,12 +22,14 @@ class BooksApp extends React.Component {
   updateShelf = (book, shelf) => {
       console.log(book)
       console.log(shelf)
-      BooksAPI.update(book, shelf).then(
-        book.book.shelf = shelf
-      )
-      this.setState(({
-        books: this.state.books.filter(b => b.id !== book.id).concat([book])
-      }))
+      if (book.shelf !== shelf){
+        BooksAPI.update(book, shelf).then(
+          book.book.shelf = shelf
+        )
+        this.setState(({
+          books: this.state.books.filter(b => b.id !== book.id).concat([book])
+        }))
+      }
   }
 
 
