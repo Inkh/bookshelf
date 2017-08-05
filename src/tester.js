@@ -3,6 +3,15 @@ import { Link } from 'react-router-dom'
 
 class Tester extends Component {
 
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const values = e.target.values
+    console.log(values);
+
+    // if(this.props.onCreateContact){
+    //   this.props.onCreateContact(values)
+    // }
+  }
 
   render(){
     return(
@@ -22,13 +31,15 @@ class Tester extends Component {
                           <div className='book-top'>
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${b.imageLinks.thumbnail})`}}></div>
                             <div className='book-shelf-changer'>
-                              <select>
+                              <form onSubmit={this.props.onUpdate(b, )}>
+                                <select>
                                 <option value="none" disabled>Move to...</option>
                                 <option value="currentlyReading">Currently Reading</option>
                                 <option value="wantToRead">Want to Read</option>
                                 <option value="read">Read</option>
                                 <option value="none">None</option>
-                              </select>
+                                </select>
+                              </form>
                             </div>
                           </div>
                           <div className='book-title'>
