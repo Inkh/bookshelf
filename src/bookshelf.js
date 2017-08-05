@@ -2,7 +2,11 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 
 class BookShelf extends Component {
+
     render(){
+      let lilter;
+      lilter = this.props.books.filter((book) => book.shelf === 'currentlyReading')
+      console.log(lilter)
       return(
         <div className='list-books'>
           <ol className='books-grid'>

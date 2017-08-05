@@ -3,6 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './bookshelf'
 import SearchResults from './searchresult'
+import Tester from './tester'
 import { Route } from 'react-router-dom'
 
 
@@ -19,13 +20,10 @@ class BooksApp extends React.Component {
     })
   }
 
-  // createSearch(){
-  //   console.log('im here!')
-  // }
-
   render() {
     return (
         <div>
+          <Tester books={this.state.books} />
           <Route exact path='/' render={() => (
             <BookShelf books={this.state.books} />
 
@@ -38,14 +36,7 @@ class BooksApp extends React.Component {
             />
           )} />
         </div>
-        // <Route path='/create' render={({ history }) => (
-        //   <CreateContact
-        //     onCreateContact={(contact) => {
-        //       this.createContact(contact)
-        //       history.push('/')
-        //     }}
-        //   />
-        // )} />
+
     )
   }
 }
