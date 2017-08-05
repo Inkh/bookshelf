@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 
 class SearchResults extends Component {
     state = {
@@ -13,6 +13,7 @@ class SearchResults extends Component {
       return(
         <div className="search-books">
           <div className="search-books-bar">
+            <Link to='/' className='close-search'>Back</Link>
             <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
               <div className="search-books-input-wrapper">
                 {/*

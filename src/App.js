@@ -4,7 +4,7 @@ import './App.css'
 import BookShelf from './bookshelf'
 import SearchResults from './searchresult'
 // import Tester from './tester'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 
 
 class BooksApp extends React.Component {
@@ -28,28 +28,36 @@ class BooksApp extends React.Component {
 
   render() {
     return (
-        <div className='list-books'>
-          <div className='list-books-title'>
-            <h1>My Reads</h1>
-          </div>
+        <div>
           <Route exact path='/' render={() => (
-            <div>
-              <BookShelf
-                shelf='Currently Reading'
-                books={this.state.books.filter((book) => book.shelf ==='currentlyReading')}
-                onUpdate={this.updateShelf}
-                />
-              <BookShelf
-                shelf='Want to Read'
-                books={this.state.books.filter((book) => book.shelf ==='wantToRead')}
-                onUpdate={this.updateShelf}
-                />
-              <BookShelf
-                shelf='Read'
-                books={this.state.books.filter((book) => book.shelf ==='read')}
-                onUpdate={this.updateShelf}
-                />
+            <div className='list-books'>
+              <div className='list-books-title'>
+                <h1>My Reads</h1>
               </div>
+                <div>
+                  <BookShelf
+                    shelf='Currently Reading'
+                    books={this.state.books.filter((book) => book.shelf ==='currentlyReading')}
+                    onUpdate={this.updateShelf}
+                    />
+                  <BookShelf
+                    shelf='Want to Read'
+                    books={this.state.books.filter((book) => book.shelf ==='wantToRead')}
+                    onUpdate={this.updateShelf}
+                    />
+                  <BookShelf
+                    shelf='Read'
+                    books={this.state.books.filter((book) => book.shelf ==='read')}
+                    onUpdate={this.updateShelf}
+                    />
+                  </div>
+                  <div className='open-search'>
+                  <Link
+                  to='/create'
+                  // onClick={this.props.onNavigate}
+                  >Search Books</Link>
+                  </div>
+                </div>
           )} />
           <Route path='/create' render={({ history }) => (
             <SearchResults
