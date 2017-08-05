@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 
 class BookShelf extends Component {
 
-    handleChange(e, b){
+    handleChange(b, e){
+      console.log(b)
       console.log(e)
       const book = b.book
       this.props.onUpdate(book, e)
@@ -26,7 +27,7 @@ class BookShelf extends Component {
                               }
 
                               <div className='book-shelf-changer'>
-                                  <select value={book.shelf} onChange={(e) => this.handleChange(e.target.value, {book})}>
+                                  <select value={book.shelf} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
                                     <option value="none" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
@@ -39,9 +40,7 @@ class BookShelf extends Component {
                               <p>{book.title}</p>
                             </div>
                             <div className='book-authors'>
-                              {book.authors.map((author, index) => (
-                                  <p key={index}>{author}</p>
-                              ))}
+                              {book.authors}
                             </div>
                           </li>
                         </div>

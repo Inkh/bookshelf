@@ -23,9 +23,8 @@ class BooksApp extends React.Component {
   updateShelf = (book, shelf) => {
       console.log(book)
       console.log(shelf)
-      console.log(this.state.books.filter(book => book))
       BooksAPI.update(book, shelf).then(
-        book.shelf = shelf
+        book.book.shelf = shelf
       )
       this.setState(({
         books: this.state.books.filter(b => b.id !== book.id).concat([book])
@@ -81,7 +80,7 @@ class BooksApp extends React.Component {
             <SearchResults
               onSearch={this.searchBooks}
               onUpdate={this.updateShelf}
-              results={this.state.results.filter((book) => book.shelf === 'none')}
+              results={this.state.results}
               onCreateSearch={() => {
                 history.push('/')
               }}
