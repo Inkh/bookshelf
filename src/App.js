@@ -10,7 +10,7 @@ import { Route, Link } from 'react-router-dom'
 class BooksApp extends React.Component {
   state = {
     books : [],
-    showSearchPage: true
+    results : []
   }
 
   componentDidMount(){
@@ -25,6 +25,14 @@ class BooksApp extends React.Component {
       console.log(book)
     })
   }
+
+  searchBooks = (query) => {
+    BooksAPI.search(query, 20).then((results) => {
+      this.setState({ results })
+      console.log(this.state.results)
+    })
+  }
+
 
   render() {
     return (
@@ -61,6 +69,8 @@ class BooksApp extends React.Component {
           )} />
           <Route path='/create' render={({ history }) => (
             <SearchResults
+              onSearch={this.searchBooks}
+              results={this.state.results}
               onCreateSearch={() => {
                 history.push('/')
               }}

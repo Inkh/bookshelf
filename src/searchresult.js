@@ -1,15 +1,27 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+// import * as BooksAPI from './BooksAPI'
+
 
 class SearchResults extends Component {
     state = {
-      results: [],
-      showSearchPage: true
+      query: ''
     }
 
-    // this.props.onCreateSearch();
+    updateQuery = (query) => {
+      this.setState({ query: query.trim() })
+      console.log(this.state.query.length)
+      if(this.state.query.length > 1){
+        this.props.onSearch(query)
+      }
+
+    }
 
     render(){
+      if(!this.props.results){
+        return <div>Loading...</div>
+      }
+
       return(
         <div className="search-books">
           <div className="search-books-bar">
@@ -23,11 +35,50 @@ class SearchResults extends Component {
                       However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                       you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
-
+                <input
+                  value={this.state.query}
+                  onChange={(event) => this.updateQuery(event.target.value)}
+                  type="text"
+                  placeholder="Search by title or author"
+                  />
               </div>
             </div>
+            <div className='list-books-content'>
+              <div>
+                  <div className='bookshelf-books'>
+                      <ol className='books-grid'>
+                        {this.props.results.map((book, index) => (
+                          <div className='book' key={book.id}>
+                            <li>
+                              <div className='book-top'>
+                                <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})`}}></div>
+                                <div className='book-shelf-changer'>
+                                    <select>
+                                    <option value="none" disabled>Move to...</option>
+                                    <option value="currentlyReading">Currently Reading</option>
+                                    <option value="wantToRead">Want to Read</option>
+                                    <option value="read">Read</option>
+                                    <option value="none">None</option>
+                                    </select>
+                                </div>
+                              </div>
+                              <div className='book-title'>
+                                <p>{book.title}</p>
+                              </div>
+                              <div className='book-authors'>
+                                {book.authors.map((author, index) => (
+                                    <p key={index}>{author}</p>
+                                ))}
+                              </div>
+                            </li>
+                          </div>
+                        ))}
+                      </ol>
+                    </div>
+                </div>
+              </div>
           </div>
+
       )
     }
 }
