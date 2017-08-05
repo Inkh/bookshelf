@@ -84,6 +84,7 @@ class BooksApp extends React.Component {
               onSearch={this.searchBooks}
               onUpdate={this.updateShelf}
               results={this.state.results}
+              books={this.state.books}
               onCreateSearch={() => {
                 history.push('/')
               }}
