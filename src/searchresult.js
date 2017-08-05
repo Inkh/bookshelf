@@ -11,15 +11,23 @@ class SearchResults extends Component {
     updateQuery = (query) => {
       this.setState({ query: query.trim() })
       console.log(this.state.query.length)
-      if(this.state.query.length > 1){
+      if(this.state.query !== ''){
         this.props.onSearch(query)
       }
 
     }
 
     render(){
+      let showingResults;
+      if(this.props.results){
+        showingResults = this.props.results
+      }
       if(!this.props.results){
-        return <div>Loading...</div>
+        return (
+
+          <div>Loading...</div>
+
+        )
       }
 
       return(
@@ -37,7 +45,7 @@ class SearchResults extends Component {
                         you don't find a specific author or title. Every search is limited by search terms.
                   */}
                   <input
-                    value={this.state.query}
+                    // value={this.state.query}
                     onChange={(event) => this.updateQuery(event.target.value)}
                     type="text"
                     placeholder="Search by title or author"

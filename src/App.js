@@ -26,10 +26,14 @@ class BooksApp extends React.Component {
     })
   }
 
+
   searchBooks = (query) => {
+    console.log(query)
     BooksAPI.search(query, 20).then((results) => {
-      this.setState({ results })
-      console.log(this.state.results)
+      if(results){
+        this.setState({ results })
+        console.log(this.state.results)
+      }
     })
   }
 
@@ -70,7 +74,7 @@ class BooksApp extends React.Component {
           <Route path='/create' render={({ history }) => (
             <SearchResults
               onSearch={this.searchBooks}
-              results={this.state.results}
+              results={this.state.results.filter((book) => book.shelf === 'none')}
               onCreateSearch={() => {
                 history.push('/')
               }}
