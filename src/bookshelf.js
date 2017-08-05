@@ -3,6 +3,12 @@ import React, { Component } from 'react'
 
 class BookShelf extends Component {
 
+    handleChange(e, b){
+      console.log(e)
+      const book = b.book
+      this.props.onUpdate(book, e)
+    }
+
     render(){
       return(
           <div className='list-books-content'>
@@ -20,7 +26,7 @@ class BookShelf extends Component {
                               }
 
                               <div className='book-shelf-changer'>
-                                  <select value={book.shelf} onChange={() => (console.log('hi'))}>
+                                  <select value={book.shelf} onChange={(e) => this.handleChange(e.target.value, {book})}>
                                     <option value="none" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>

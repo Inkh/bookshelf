@@ -23,6 +23,7 @@ class BooksApp extends React.Component {
   updateShelf = (book, shelf) => {
     BooksAPI.update(book, shelf).then((book) => {
       console.log(book)
+      // this.setState( { book })
     })
   }
 
@@ -64,10 +65,9 @@ class BooksApp extends React.Component {
                     />
                   </div>
                   <div className='open-search'>
-                  <Link
-                  to='/create'
-                  // onClick={this.props.onNavigate}
-                  >Search Books</Link>
+                    <Link
+                    to='/create'
+                    >Search Books</Link>
                   </div>
                 </div>
           )} />
