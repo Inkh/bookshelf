@@ -58,7 +58,7 @@ class SearchResults extends Component {
                     <div className='bookshelf-books'>
                         <ol className='books-grid'>
                           {this.props.results.map((book, index) => (
-                            <div className='book' key={book.id}>
+                            <div className='book' key={index}>
                               <li>
                                 <div className='book-top'>
                                   {book.imageLinks ? (
@@ -79,13 +79,13 @@ class SearchResults extends Component {
                                   ) :(
 
                                     <div className='book-shelf-changer'>
-                                      <select value={book.shelf} onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
-                                      <option value="none" disabled>Move to...</option>
-                                      <option value="currentlyReading">Currently Reading</option>
-                                      <option value="wantToRead">Want to Read</option>
-                                      <option value="read">Read</option>
-                                      <option value="none">None</option>
-                                    </select>
+                                      <select value='none' onChange={(e) => this.props.onUpdate({book}, e.target.value)}>
+                                        <option value="none" disabled>Move to...</option>
+                                        <option value="currentlyReading">Currently Reading</option>
+                                        <option value="wantToRead">Want to Read</option>
+                                        <option value="read">Read</option>
+                                        <option value="none">None</option>
+                                      </select>
                                     </div>
                                   )}
                                 </div>
